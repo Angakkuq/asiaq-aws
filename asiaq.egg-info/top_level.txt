@@ -1,0 +1,4 @@
+asiaq
+bin
+disco_aws_automation
+test

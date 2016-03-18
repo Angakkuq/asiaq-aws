@@ -1,0 +1,4 @@
+
+        [paste.app_factory]
+        main=disco_aws_automation:main
+    

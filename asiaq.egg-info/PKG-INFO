@@ -1,0 +1,13 @@
+Metadata-Version: 1.1
+Name: asiaq
+Version: 1.0.61
+Summary: infrastructure automation for AWS
+Home-page: UNKNOWN
+Author: The Disco Team
+Author-email: UNKNOWN
+License: BSD
+Description: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: License :: OSI Approved :: BSD License
