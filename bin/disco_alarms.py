@@ -30,7 +30,7 @@ import logging
 
 from docopt import docopt
 
-from disco_aws_automation import DiscoAWS, DiscoSNS, read_config
+from disco_aws_automation import DiscoAWS, AsiaqSNS, read_config
 from disco_aws_automation.disco_aws_util import run_gracefully
 from disco_aws_automation.disco_logging import configure_logging
 from disco_aws_automation.disco_alarm_config import DiscoAlarmsConfig
@@ -53,7 +53,7 @@ def run():
 
     if args["update_notifications"]:
         notifications = alarms_config.get_notifications()
-        DiscoSNS().update_sns_with_notifications(notifications, env, delete=delete, dry_run=dry_run)
+        AsiaqSNS().update_sns_with_notifications(notifications, env, delete=delete, dry_run=dry_run)
     elif args["update_metrics"]:
         if delete:
             DiscoAlarm().delete_hostclass_environment_alarms(env, hostclass)

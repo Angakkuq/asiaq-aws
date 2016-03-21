@@ -4,7 +4,7 @@ import logging
 
 from boto.ec2.cloudwatch import CloudWatchConnection
 
-from .disco_sns import DiscoSNS
+from .asiaq_sns import AsiaqSNS
 from .disco_alarm_config import DiscoAlarmConfig
 from .resource_helper import throttled_call
 
@@ -17,9 +17,9 @@ class DiscoAlarm(object):
     Class orchestrating CloudWatch alarms
     """
 
-    def __init__(self, disco_sns=None):
+    def __init__(self, asiaq_sns=None):
         self.cloudwatch = CloudWatchConnection()
-        self._disco_sns = disco_sns
+        self._asiaq_sns = asiaq_sns
 
     def upsert_alarm(self, alarm):
         """
@@ -36,18 +36,18 @@ class DiscoAlarm(object):
         )
 
     @property
-    def disco_sns(self):
+    def asiaq_sns(self):
         """
         Lazy sns connection
         """
-        self._disco_sns = self._disco_sns or DiscoSNS()
-        return self._disco_sns
+        self._asiaq_sns = self._asiaq_sns or AsiaqSNS()
+        return self._asiaq_sns
 
     def _sns_topic(self, alarm):
         """
         retrieve SNS topic correspoding to the alarm
         """
-        return self.disco_sns.topic_arn_from_name(alarm.notification_topic)
+        return self.asiaq_sns.topic_arn_from_name(alarm.notification_topic)
 
     def create_alarms(self, alarms):
         """

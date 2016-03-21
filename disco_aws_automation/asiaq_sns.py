@@ -1,4 +1,4 @@
-'''Contains DiscoSNS class for manipulating SNS topics'''
+'''Contains AsiaqSNS class for manipulating SNS topics'''
 import logging
 import itertools
 
@@ -6,7 +6,7 @@ import boto
 from boto.exception import BotoServerError
 
 
-class DiscoSNS(object):
+class AsiaqSNS(object):
     """
     Class for manipulating SNS topics
     """
@@ -118,11 +118,11 @@ class DiscoSNS(object):
             for topic_arn, group in itertools.groupby(
                 existing_subscriptions, lambda subscription: subscription["TopicArn"])}
 
-        topics_to_delete = DiscoSNS.get_topics_to_delete(existing_topics, desired_topics, env)
+        topics_to_delete = AsiaqSNS.get_topics_to_delete(existing_topics, desired_topics, env)
 
         topics_to_delete_arn = [self.topic_arn_by_name(topic) for topic in topics_to_delete]
 
-        subscriptions_to_delete = DiscoSNS.get_subscriptions_to_delete(existing_subscriptions_by_topic,
+        subscriptions_to_delete = AsiaqSNS.get_subscriptions_to_delete(existing_subscriptions_by_topic,
                                                                        desired_subscriptions_by_topic,
                                                                        env)
 

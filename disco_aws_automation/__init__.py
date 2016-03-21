@@ -52,7 +52,7 @@ from .disco_alarm_config import DiscoAlarmsConfig, DiscoAlarmConfig
 from .disco_metrics import DiscoMetrics
 from .disco_app_auth import DiscoAppAuth
 from .disco_deploy import DiscoDeploy
-from .disco_sns import DiscoSNS
+from .asiaq_sns import AsiaqSNS
 from .disco_chaos import DiscoChaos
 from .disco_storage import DiscoStorage
 from .disco_log_metrics import DiscoLogMetrics

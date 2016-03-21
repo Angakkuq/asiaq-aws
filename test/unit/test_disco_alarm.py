@@ -7,7 +7,7 @@ from moto import mock_cloudwatch
 from boto.ec2.cloudwatch import CloudWatchConnection
 from disco_aws_automation import DiscoAlarm, DiscoAlarmsConfig
 from disco_aws_automation import DiscoAlarmConfig
-from disco_aws_automation import DiscoSNS
+from disco_aws_automation import AsiaqSNS
 from disco_aws_automation import AlarmConfigError
 from test.helpers.patch_disco_aws import get_mock_config
 
@@ -22,8 +22,8 @@ class DiscoAlarmTests(TestCase):
     def setUp(self):
         self.cloudwatch_mock = mock_cloudwatch()
         self.cloudwatch_mock.start()
-        disco_sns = DiscoSNS(account_id=ACCOUNT_ID)
-        self.alarm = DiscoAlarm(disco_sns)
+        asiaq_sns = AsiaqSNS(account_id=ACCOUNT_ID)
+        self.alarm = DiscoAlarm(asiaq_sns)
 
     def tearDown(self):
         self.alarm.cloudwatch.delete_alarms(
