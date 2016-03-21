@@ -1,5 +1,5 @@
-nose.config: INFO: Set working dir to /Users/ejen/pydevels/asiaq
-/Users/ejen/pyenvs/asiaq/lib/python2.7/site-packages/nose/config.py:435: DeprecationWarning: Use of multiple -w arguments is deprecated and support may be removed in a future release. You can get the same behavior by passing directories without the -w argument on the command line, or by using the --tests argument in a configuration file.
+nose.config: INFO: Set working dir to /Users/ejen/pydevels/asiaq-aws
+/Users/ejen/pyenvs/asiaq-aws/lib/python2.7/site-packages/nose/config.py:435: DeprecationWarning: Use of multiple -w arguments is deprecated and support may be removed in a future release. You can get the same behavior by passing directories without the -w argument on the command line, or by using the --tests argument in a configuration file.
   DeprecationWarning)
 nose.config: INFO: Ignoring files matching ['^\\.', '^_', '^setup\\.py$']
 nose.plugins.cover: INFO: Coverage report will include only packages: ['disco_aws_automation']
@@ -16,6 +16,12 @@ nose.plugins.cover: INFO: Coverage report will include only packages: ['disco_aw
 nose.plugins.cover: INFO: Coverage report will include only packages: ['disco_aws_automation']
 nose.plugins.cover: INFO: Coverage report will include only packages: ['disco_aws_automation']
 Validates all json files for syntax ... ok
+Ensure a valid object was created ... ok
+Ensure we can create topics ... ok
+Ensure the right topics are returned for deletion ... ok
+Ensure we can subscribe emails ... ok
+Ensure we can subscribe urls ... ok
+Ensure proper topic arn is constructed from a topic name ... ok
 random passwords are at least 60 characters long ... ok
 Test getting a fresh group with None as max_size ... ok
 Test getting a fresh group with None as max_size ... ok
@@ -57,13 +63,13 @@ No instance killed when instance list is empty ... ok
 Right percentage of instances killed when instance list is large ... ok
 At least one instance killed when instance list is small ... ok
 Test that terminate makes only valid calls ... ok
-Tests that filter on hostclass does nothing when filtering is not restricted ... ok
 Test that get_phase1_ami_id raises AMIError if find_ami returns None ... ok
 Test that get_phase1_ami_id uses find_ami properly on success ... ok
 Test that list amis can be called without filter successfully ... ok
 Test that list amis can filter by product line successfully ... ok
 Test that list amis can filter by productline and stage successfully ... ok
 Test that list amis can filter by stage successfully ... ok
+Tests that filter on hostclass does nothing when filtering is not restricted ... ok
 Tests that filter on ami works when ami is set ... ok
 Tests that filter on hostclass filters when the filtering hostclass is set ... ok
 Tests that filter on hostclass filters to pipeline when no hostclass filter set ... ok
@@ -72,20 +78,20 @@ Tests if DiscoDeploy.get_integration_test works correctly ... ok
 Tests that get_latest_failed_amis() returns latest failed amis ... ok
 get_latest_running_amis returns later ami if hostclass has two AMIs running ... ok
 _get_latest_other_image_id uses amis of old deployed instances ... ok
-Tests that get_latest_tested_amis() returns latest tested amis (dec) ... ok
 Tests that get_latest_tested_amis() returns latest tested amis (inc) ... ok
+Tests that get_latest_tested_amis() returns latest tested amis (dec) ... ok
 Tests that get_latest_tested_amis() works when an AMI is without a date ... ok
 _get_latest_other_image_id returns latest of multiple amis ... ok
 Tests that get_latest_untagged_amis() returns untagged amis ... ok
 Tests that get_latest_untested_amis() returns untested amis ... ok
 Tests that we can find the next untested ami to test for each hostclass without restrictions ... ok
 Tests that we can find the next untested ami to test for each hostclass restricted to pipeline ... ok
-get_test_host returns a host for the testing hostclass ... ok
 Tests that get_newest_in_either_map works if hostclass not in first list ... ok
+get_test_host returns a host for the testing hostclass ... ok
 Tests that get_newest_in_either_map works with simple input ... ok
 get_test_host raises an IntegrationTestError when a host can not be found ... ok
-Tests that we can don't return any amis to update in prod when we are up to date ... ok
 Tests that we can don't return failed AMIs to update to in prod ... ok
+Tests that we can don't return any amis to update in prod when we are up to date ... ok
 Tests that update an AMI that is not runnng ... ok
 Tests that we can find the next untested AMI to deploy in prod ... ok
 Tests that we can find the next tested AMI to deploy in prod ... ok
@@ -124,24 +130,35 @@ We don't call spinup in a no deploy AMI dry_run ... ok
 No deploy instances are promoted and autoscaling updated, when smoketest passes ... ok
 Instance not in pipeline is still tested and promoted ... ok
 Ensure pending AMIs are not considered for deployment ... ok
-Test that an exception is raised if the pre-test fails ... ok
 _promote_ami swallows exceptions ... ok
+Test that an exception is raised if the pre-test fails ... ok
 run_integration_tests runs the correct command on the correct instance ... ok
 Test that run_integration_tests handles failure appropriately ... ok
 Test that run_integration_tests handles failure with fallback amis ... ok
 run_integration_tests raises exception when a get_test_host fails to find a host ... ok
-_set_maintenance_mode handles errors ... ok
 _set_maintenance_mode makes expected remotecmd call ... ok
-Test that handle run_tests success appropriately ... ok
+_set_maintenance_mode handles errors ... ok
 Smoketest instances are failed and autoscaling updated on failure ... ok
+Test that handle run_tests success appropriately ... ok
 Smoketest instances are promoted and autoscaling updated on success ... ok
 Test test with amis ... ok
 Test test without amis ... ok
 We don't call spinup in a deployed AMI dry_run ... ok
-Test update_ami handling new deployable hostclass ... ok
 Test update_ami handling new non-deployable hostclass ... ok
-Test update_ami handling of non-pipeline hostclass ... ok
+Test update_ami handling new deployable hostclass ... ok
 Test update with amis ... ok
+Test update_ami handling of non-pipeline hostclass ... ok
+Ensures DiscoDynamoDB.describe_table() returns the right property values of a table ... ok
+Ensures invalid environment name raises DynamoDBEnvironmentError exception ... ok
+Ensures DiscoDynamoDB returns names of all the tables in sorted order ... ok
+Ensures DiscoDynamoDB.update_table() correctly updates a table ... ok
+Test delete all log groups in environment ... ok
+Test delete all metric filters in env ... ok
+Test delete log groups for hostclass ... ok
+Test delete metric filters for hostclass ... ok
+Test listing log groups ... ok
+Test list log metric filters for hostclass ... ok
+Test deleting and creating metric filter from config ... ok
 Test modifying a redis cluster ... ok
 Test creating a subnet group ... ok
 Test deleting all cache clusters in environment ... ok
@@ -150,47 +167,30 @@ Test deleting a cache cluster ... ok
 Test getting list of cache clusters ... ok
 Test modifying a redis cluster ... ok
 Test updating multiple clusters at once ... ok
-Ensures DiscoDynamoDB.describe_table() returns the right property values of a table ... ok
-Ensures invalid environment name raises DynamoDBEnvironmentError exception ... ok
-Ensures DiscoDynamoDB returns names of all the tables in sorted order ... ok
-Ensures DiscoDynamoDB.update_table() correctly updates a table ... ok
-Tests that get_db_parameter_group_family handles all the expected cases ... ok
 Check raise exception when length doesn't match ... ok
 Check raise exception when length does match ... ok
+Tests that get_db_parameter_group_family handles all the expected cases ... ok
 Test update without amis ... ok
-Test delete all log groups in environment ... ok
-Test delete all metric filters in env ... ok
-Test delete log groups for hostclass ... ok
-Test delete metric filters for hostclass ... ok
-Test listing log groups ... ok
-Test list log metric filters for hostclass ... ok
-Test deleting and creating metric filter from config ... ok
-Tests that we handle smoketest Timeout ... ok
-Ensure a valid object was created ... ok
-Ensure we can create topics ... ok
-Ensure the right topics are returned for deletion ... ok
-Ensure we can subscribe emails ... ok
-Ensure we can subscribe urls ... ok
-Ensure proper topic arn is constructed from a topic name ... ok
 apt-get update --quiet -y
-apt-get upgrade --quiet -y --auto-remove
 create_snapshot_bdm() calls functions with correct syntax ... ok
 get_latest_snapshot() returns None if no snapshots exist for hostclass ... ok
 get_latest_snapshot() returns correct snapshot if many exist ... ok
 is_ebs_optimized works ... ok
+apt-get upgrade --quiet -y --auto-remove
 yum update -y
 yum update -y
-Tests that we do smoketests ... ok
 Ensure apt-get update is present in Ubuntu phase1 and not commented out ... ok
 Ensure apt-get upgrade is present in Ubuntu phase1 and not commented out ... ok
 Logging config does not contain debug logging ... ok
 Ensure that prod firewall rules don't allow ssh traffic. ... ok
 Ensure yum update is present in CentOS phase1 and not commented out ... ok
+Tests that we do smoketests ... ok
 Tests that we wait for autoscaling to complete ... ok
 Test deleting records by value ... ok
 Test getting records by value ... ok
 Test listing records for a hosted zone ... ok
 Test listing the available hosted zones ... ok
+Tests that we handle smoketest Timeout ... ok
 Test that handle smoketest failure appropriately ... ok
 Test deleting an ELB ... ok
 Test deletion of all ELBs ... ok
@@ -210,10 +210,11 @@ Test get_elb for a hostclass ... ok
 Test getting the list of ELBs ... ok
 
 ----------------------------------------------------------------------
-XML: /Users/ejen/pydevels/asiaq/reports/nosetests.xml
+XML: /Users/ejen/pydevels/asiaq-aws/reports/nosetests.xml
 Name                                        Stmts   Miss  Cover   Missing
 -------------------------------------------------------------------------
 disco_aws_automation                           44      1    98%   31
+disco_aws_automation.asiaq_sns                 67     48    28%   20-30, 39, 43, 51, 55-56, 63-71, 76, 83, 98-148
 disco_aws_automation.disco_accounts           196    147    25%   32-36, 42, 46-50, 54-58, 68-79, 85, 89-93, 97-118, 123-126, 131-134, 139, 142-152, 156-161, 169, 173-185, 189, 194, 199, 203, 206-210, 214-219, 222-226, 230, 234, 238-241, 245, 249, 253, 257, 265-273, 277-286, 290-293, 297-327
 disco_aws_automation.disco_acm                 23     15    35%   27-33, 37-46
 disco_aws_automation.disco_alarm               48      0   100%   
@@ -238,7 +239,6 @@ disco_aws_automation.disco_metrics            108     89    18%   22-26, 29-44, 
 disco_aws_automation.disco_rds                227    164    28%   55, 60-63, 70-76, 80, 86-88, 92-118, 124-126, 132-157, 163-164, 170-178, 184-188, 194-198, 208-216, 224-230, 234-237, 244-261, 268-272, 279-287, 290-307, 311-335, 346-362, 372, 386-387, 406-425, 450-458
 disco_aws_automation.disco_remote_exec        101     80    21%   27, 35-52, 60-74, 85-131, 136-159, 163-167, 170-172
 disco_aws_automation.disco_route53             34      9    74%   32-42, 68-70
-disco_aws_automation.disco_sns                 67     38    43%   20-30, 43, 68-71, 83, 98-148
 disco_aws_automation.disco_storage            120     63    48%   134-137, 146-151, 182, 193, 202-206, 210-218, 240-265, 273-276, 280-283, 291-302
 disco_aws_automation.disco_vpc                460    384    17%   44-67, 71-81, 85, 91-109, 114-117, 122-124, 128, 136-148, 153-160, 164-166, 170, 174-178, 182-191, 195-196, 200-222, 231-262, 269-278, 281-290, 294-299, 303-314, 318-332, 336-352, 356-375, 379-432, 439-440, 446-453, 462-465, 469, 473-489, 493-513, 517, 521-526, 530-531, 535-554, 558-561, 565, 569-573, 577-585, 593-602, 607-614, 623-675, 686-719, 724-750, 755-786, 793-794, 803-814, 823-829
 disco_aws_automation.exceptions                48      0   100%   
@@ -246,12 +246,12 @@ disco_aws_automation.hostclass_templating      21     13    38%   28-37, 44-48
 disco_aws_automation.resource_helper           81     53    35%   35-49, 70, 73, 80-83, 88-108, 115-135
 disco_aws_automation.version                    3      0   100%   
 -------------------------------------------------------------------------
-TOTAL                                        4001   2142    46%   
+TOTAL                                        4001   2152    46%   
 ----------------------------------------------------------------------
-Ran 185 tests in 19.566s
+Ran 185 tests in 17.643s
 
 OK
-(0, 3, 3)
+[call({'min_size': 1, 'integration_test': None, 'deployable': 'no', 'desired_size': 1, 'hostclass': 'mhcscarey'}, <MagicMock spec='Image' id='4527054608'>, 1, dry_run=False)]
 Validated 0 files
-[call({'min_size': 1, 'integration_test': None, 'deployable': 'no', 'desired_size': 1, 'hostclass': 'mhcscarey'}, <MagicMock spec='Image' id='4411377744'>, 1, dry_run=False)]
-[call(None, <MagicMock spec='Image' id='4376488016'>, 0, dry_run=False)]
+(0, 3, 3)
+[call(None, <MagicMock spec='Image' id='4500268816'>, 0, dry_run=False)]

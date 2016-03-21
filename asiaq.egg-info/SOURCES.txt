@@ -6,6 +6,7 @@ setup.cfg
 setup.py
 test-requirements.pip
 asiaq/__init__.py
+asiaq/asiaq_sns.py
 asiaq/disco_accounts.py
 asiaq/disco_acm.py
 asiaq/disco_alarm.py
@@ -31,7 +32,6 @@ asiaq/disco_metrics.py
 asiaq/disco_rds.py
 asiaq/disco_remote_exec.py
 asiaq/disco_route53.py
-asiaq/disco_sns.py
 asiaq/disco_storage.py
 asiaq/disco_vpc.py
 asiaq/exceptions.py
@@ -71,6 +71,7 @@ bin/disco_ssh.py
 bin/disco_ssh.sh
 bin/disco_vpc_ui.py
 disco_aws_automation/__init__.py
+disco_aws_automation/asiaq_sns.py
 disco_aws_automation/disco_accounts.py
 disco_aws_automation/disco_acm.py
 disco_aws_automation/disco_alarm.py
@@ -96,7 +97,6 @@ disco_aws_automation/disco_metrics.py
 disco_aws_automation/disco_rds.py
 disco_aws_automation/disco_remote_exec.py
 disco_aws_automation/disco_route53.py
-disco_aws_automation/disco_sns.py
 disco_aws_automation/disco_storage.py
 disco_aws_automation/disco_vpc.py
 disco_aws_automation/exceptions.py
@@ -154,6 +154,7 @@ test/integration/test_disco_iam.py
 test/integration/test_disco_vpc.py
 test/unit/__init__.py
 test/unit/test_all_json.py
+test/unit/test_asiaq_sns.py
 test/unit/test_autoscale.py
 test/unit/test_disco_alarm.py
 test/unit/test_disco_app_auth.py
@@ -168,6 +169,5 @@ test/unit/test_disco_log_metrics.py
 test/unit/test_disco_rds.py
 test/unit/test_disco_resource_helper.py
 test/unit/test_disco_route53.py
-test/unit/test_disco_sns.py
 test/unit/test_disco_storage.py
 test/unit/test_secure_config.py

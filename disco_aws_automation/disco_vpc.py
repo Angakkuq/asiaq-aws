@@ -22,7 +22,7 @@ from .disco_autoscale import DiscoAutoscale
 from .disco_constants import CREDENTIAL_BUCKET_TEMPLATE, NETWORKS
 from .disco_metanetwork import DiscoMetaNetwork
 from .disco_elasticache import DiscoElastiCache
-from .disco_sns import DiscoSNS
+from .asiaq_sns import AsiaqSNS
 from .disco_rds import DiscoRDS
 from .disco_elb import DiscoELB
 from .exceptions import (
@@ -437,7 +437,7 @@ class DiscoVPC(object):
         Note that topics are not deleted with the VPC, since that would require re-subscribing the members.
         """
         notifications = self.alarms_config.get_notifications()
-        DiscoSNS().update_sns_with_notifications(notifications, self.environment_name)
+        AsiaqSNS().update_sns_with_notifications(notifications, self.environment_name)
 
     def assign_eip(self, instance, eip_address, allow_reassociation=False):
         """
